@@ -1,1 +1,1 @@
-"# FinancialData" 
+# FinancialData
