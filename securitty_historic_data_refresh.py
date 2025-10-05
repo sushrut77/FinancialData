@@ -10,6 +10,7 @@ from datetime import datetime
 END_DATE = datetime.now().strftime('%Y-%m-%d')
 # Define the default start date as 5 years ago
 START_DATE = (datetime.now() - pd.DateOffset(years=5)).strftime('%Y-%m-%d')
+START_DATE = "1990-01-01"
 
 
 def read_tickers_from_file(filename="tickers.txt"):
@@ -79,7 +80,7 @@ def download_historical_prices(ticker_symbol: str, start_date: str = START_DATE,
         with pd.ExcelWriter(
                 excel_filename,
                 mode='a',
-                if_sheet_exists='replace',
+                if_sheet_exists='overlay',
                 engine='openpyxl'  # Use openpyxl engine, necessary for append mode
         ) as writer:
             # Write the DataFrame to the specific sheet, including the Date Index
